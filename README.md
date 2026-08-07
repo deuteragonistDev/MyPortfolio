@@ -1,3 +1,5 @@
+# MyPortfolio
+Lab de código: projetos e desafios que impulsionam minha carreira como programador.
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
