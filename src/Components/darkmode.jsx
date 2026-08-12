@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import {MdDarkMode, MdLightMode} from "react-icons/md";
 
-function Darkmode() {
+export function Darkmode() {
     // Inicializa o estado a ler a preferência inicial
     const [isDark, setIsDark] = useState(() => {
         return localStorage.theme === 'dark' ||
@@ -25,19 +25,20 @@ function Darkmode() {
     };
     return (
         <div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-cyan-50 min-h-screen p-8 transition-colors">
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg px-6 py-8 shadow-xl max-w-md mx-auto">
-                <h1 className="text-4xl font-bold font-(family-name:--font-mono) mb-4">{/* É possível diminuir a Sintaxe da fonte para font-(family-name:--font-mono) */}
-                    Olá mundo!
-                </h1>
-                <button onClick={toggleTheme}
-                        className="px-4 py-2 rounded-md bg-cyan-600 text-white font-medium hover:bg-cyan-700 hover:cursor-pointer transition-colors">
-                    {isDark ?
-                        (<MdDarkMode className="text-2xl"/>)
-                        :
-                        (<MdLightMode className="text-2xl "/>)
+                <div className="bg-gray-100 dark:bg-gray-800 rounded-sm px-3 py-1 shadow-xl  max-w-21 -mt-5">
+                    <h1 className="text-sm text-center font-bold font-(family-name:--font-mono) ">{/* É possível diminuir a Sintaxe da fonte para font-(family-name:--font-mono) */}
+                        Alternar Modo</h1>
+                </div>
+                <div>
+                    <button onClick={toggleTheme}
+                            className="px-8 py-3  rounded-md  bg-gray-600 dark:bg-cyan-600 text-white font-medium dark:hover:bg-gray-600 hover:bg-cyan-700 hover:cursor-pointer transition-colors">
+                        {isDark ?
+                            (<MdDarkMode className="text-md  "/>)
+                            :
+                            (<MdLightMode className="text-md "/>)
                         }
-                </button>
-            </div>
+                    </button>
+                </div>
         </div>
     )
 }
