@@ -26,8 +26,7 @@ export default function Darkmode() {
     return (
         <div>
             <div>
-                <button onClick={toggleTheme}
-                        className="px-8 py-3 rounded-xl bg-gray-600 dark:bg-cyan-600 text-white font-medium dark:hover:bg-gray-600 hover:bg-cyan-700 hover:cursor-pointer transition-colors">
+                <button onClick={toggleTheme} className="px-1 py-1 text-lg md:px-8 md:py-3 rounded-lg bg-gray-600 dark:bg-cyan-600 text-white font-medium dark:hover:bg-gray-600 hover:bg-cyan-700 hover:cursor-pointer transition-colors">
                     {isDark ?
                         (<MdDarkMode className="text-md  "/>)
                         :
