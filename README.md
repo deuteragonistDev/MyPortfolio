@@ -1,5 +1,15 @@
 # MyPortfolio
 Lab de código: projetos e desafios que impulsionam minha carreira como programador.
+
+# 🚀 Meu Portfólio Pessoal
+
+> 🔗 **Acesse a demonstração online do site:** [https://deuteragonistDev.github.io/MyPortfolio/](https://deuteragonistDev.github.io/MyPortfolio/)
+
+## 🛠️ Tecnologias Utilizadas
+- React.js
+- Tailwind CSS v4
+- React Router DOM
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
