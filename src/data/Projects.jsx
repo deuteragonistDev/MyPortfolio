@@ -1,9 +1,9 @@
 export const projects = [
   {
-    id: "-1",
+    id: "-999",
     title: "Project example ",
     description: "Description of project",
-    date: "xx/xx/xxxx",
+    date: "xxxx",
     type: "Personal/academic/Profissional",
     link: "Mysite.com",
     tags: ["React", "Node", "MongoDB"],
@@ -12,19 +12,21 @@ export const projects = [
   },
   {
     id: "1",
-    title: "FrotaGesta",
+    title: "FrotaGesta - Sistema de Gestão de Frotas",
     description:
-      "Sistema de gestão de frota veicular, desenvolvido para otimizar o controle de veículos e motoristas. " +
-      "Uma aplicação fullstack, utilizando React + componentes Bootstrap no frontend,  " +
-      "no backend JDBC + JavaSpringBoot e postgresql como banco de dados. O sistema permite o cadastro de veículos, motoristas, manutenção, " +
-      "proporcionando uma visão completa da frota.",
-    date: "03/2026",
-    daysondev: "30",
-    type: "Personal/academic/Profissional",
-    link: "Mysite.com",
-    tags: ["React", "Node", "MongoDB"],
-    image: "./assets/image-name.png",
-    repository: "github.com/deuteragonistDev/repo-name ",
+      "Plataforma Full-Stack (Spring Boot + React) para gestão logística, controlando motoristas, viagens, abastecimentos e disparando alertas preditivos de manutenção veicular.",
+    date: "2026",
+    type: "Acadêmico",
+    link: "",
+    tags: ["Java", "Spring Boot", "React", "PostgreSQL", "REST API"],
+    image: "",
+    repository: "",
+    highlights: [
+      "Arquitetura de banco de dados robusta contendo Triggers e Stored Procedures para blindagem de regras de negócio nativas",
+      "Processamento dinâmico assíncrono no frontend para realizar integrações complexas de dados (Front-end Joins)",
+      "Geração automatizada de alertas críticos baseado em quilometragem e plano de serviço preventivo",
+    ],
+    featured: true,
   },
   {
     id: 2,
@@ -72,7 +74,7 @@ export const projects = [
     title: "Simulador de Sistema Bancário e Pagamentos",
     description:
       "Aplicação orientada a objetos para gerenciamento de contas correntes e processamento de pagamentos via PIX, Boleto e Cartão de Crédito com controle de limite e faturas parceladas, disponibilizando interfaces gráfica (Swing) e em console.",
-    date: "03/2026",
+    date: "2026",
     type: "Acadêmico",
     link: "",
     tags: ["Java", "POO", "Polimorfismo", "GUI"],
@@ -193,24 +195,6 @@ export const projects = [
   },
   {
     id: 10,
-    title: "FrotaGesta - Sistema de Gestão de Frotas",
-    description:
-      "Plataforma Full-Stack (Spring Boot + React) para gestão logística, controlando motoristas, viagens, abastecimentos e disparando alertas preditivos de manutenção veicular.",
-    date: "2026",
-    type: "Acadêmico",
-    link: "",
-    tags: ["Java", "Spring Boot", "React", "PostgreSQL", "REST API"],
-    image: "",
-    repository: "",
-    highlights: [
-      "Arquitetura de banco de dados robusta contendo Triggers e Stored Procedures para blindagem de regras de negócio nativas",
-      "Processamento dinâmico assíncrono no frontend para realizar integrações complexas de dados (Front-end Joins)",
-      "Geração automatizada de alertas críticos baseado em quilometragem e plano de serviço preventivo",
-    ],
-    featured: true,
-  },
-  {
-    id: 11,
     title: "Analisador Léxico (DFA)",
     description:
       "Implementação de um Autômato Finito Determinístico para leitura, validação e tokenização de códigos-fonte em um subconjunto simplificado da linguagem C.",
@@ -227,7 +211,7 @@ export const projects = [
     featured: false,
   },
   {
-    id: 12,
+    id: 11,
     title: "Fundações Matemáticas de IA",
     description:
       "Resolução analítica e prova matemática para o treinamento e otimização de pesos de algoritmos clássicos de Machine Learning (Regressão, Perceptron e Classificação).",
@@ -250,7 +234,7 @@ export const projects = [
     featured: true,
   },
   {
-    id: 13,
+    id: 12,
     title: "Méleti Organoméni - EdTech App",
     description:
       "Concepção, arquitetura de experiência (UX/UI) e modelo de negócios para um aplicativo de estudos gamificado e adaptado às necessidades de alunos neurodivergentes (TDAH).",

@@ -81,10 +81,10 @@ O projeto está configurado para deploy automático no GitHub Pages:
 ## 📋 Páginas
 
 | Rota | Componente | Descrição |
-|------|------------|-----------|
+| ------ | ------------ | ----------- |
 | `/` | `Home` | Landing page com stats, áreas de foco e tech stack |
 | `/hero` | `Hero` | Seção "Sobre mim" com CTA para projetos |
-| `/projects` | `Projects` | Grid filtrável com todos os 13 projetos |
+| `/projects` | `Projects` | Grid filtrável com todos os 12 projetos |
 
 ## 📦 Projetos em Destaque
 
@@ -95,6 +95,7 @@ O portfólio contém **13 projetos** categorizados como:
 - **Concepção de Produto** (1) — UX/UI, Product Management, Gamificação
 
 **Projetos marcados como destaque (⭐):**
+
 - Sistema de Análise e Ordenação de Filmes (C, Algoritmos)
 - Relógio Digital RISC-V Bare Metal (Assembly, Embarcados)
 - Alocador de Pilha Dinâmica com Syscall brk (Assembly, SO)
@@ -105,7 +106,9 @@ O portfólio contém **13 projetos** categorizados como:
 ## 🎨 Personalização
 
 ### Cores (Tailwind v4)
+
 Edite `src/index.css` na seção `@theme`:
+
 ```css
 @theme {
   --color-cyan-600: #0891b2;  /* Cor primária */
@@ -114,21 +117,17 @@ Edite `src/index.css` na seção `@theme`:
 ```
 
 ### Fontes
+
 - **Monospace:** IBM Plex Mono (código, UI)
 - **Display:** Press Start 2P (títulos, branding)
 
 ### Tema Escuro/Claro
+
 Controlado via `localStorage.theme` + `prefers-color-scheme` em `src/Components/darkmode.jsx`.
 
 ## 📝 Issues Conhecidos
 
 Consulte [`BUGS.md`](BUGS.md) para lista completa de inconsistências e melhorias planejadas.
-
-Principais:
-- Dados de projetos com placeholders (imagens, links, repositórios)
-- Estrutura inconsistente entre objetos de projeto
-- Projeto template (ID -1) precisa ser removido
-- Favicon PNG em vez de ICO/SVG
 
 ## 🤝 Contribuição
 
