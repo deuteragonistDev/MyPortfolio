@@ -1,29 +1,82 @@
 import Darkmode from './darkmode';
 import { FaCat } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { HiMiniHome } from "react-icons/hi2";
 import { PiSwordFill } from "react-icons/pi";
-
+import { FaCode } from 'react-icons/fa';
 
 function Topbar() {
+  const navLinkClass = ({ isActive }) => `
+    px-4 py-2.5 md:px-6 md:py-3 font-mono text-sm rounded-lg transition-all duration-200 min-w-[44px] text-center
+    ${isActive
+      ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/30'
+      : 'bg-gray-800 dark:bg-gray-700 text-gray-200 dark:text-gray-200 hover:bg-cyan-600 hover:text-white hover:shadow-md hover:shadow-cyan-500/20'
+    }
+  `;
+
   return (
-    <div className={'flex px-3 py-3 justify-between fixed top-4 left-3 right-3 bg-gray-500 text-gray-900 dark:bg-gray-700 dark:text-cyan-50 rounded-xl transition-colors'}>
-      <div className={'font-press flex items-center'}>
-        <div className={'text-lg font-bold text-purple-700 flex'}><a href={'https://github.com/deuteragonistDev'} className={'no-underline bg-black md:bg-transparent md:hover:bg-black hover:rounded-sm hover:px-2 ml-3 ease-out'} target={'_blank'} rel={'noreferrer'}>PrpCat<span className={'text-green-500'}>_DEV</span></a></div><FaCat className={'text-2xl text-purple-700'} />
-      </div>
+    <nav className="fixed top-3 left-3 right-3 z-50" aria-label="Navegação principal">
+      <div className="bg-gray-900/20 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-700/50 dark:border-gray-600/50">
+        
+        {/* Mobile: Stacked layout */}
+        <div className="md:hidden p-3 space-y-2">
+          {/* Brand row */}
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-2 no-underline group" aria-label="PurpleCat Dev - Home">
+              <FaCat className="text-xl text-purple-500 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
+              <span className="font-press text-base bg-gray-950 whitespace-nowrap  dark:bg-gray-950 px-2 py-0.5 rounded font-mono border border-gray-700">
+                <span className="text-purple-400">PrpCat</span><span className="text-green-400">_DEV</span>
+              </span>
+            </Link>
+            <Darkmode />
+          </div>
+          
+          {/* Nav links - horizontal scroll on mobile */}
+          <div className="flex items-center justify-center gap-1 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
+            <NavLink to="/" end className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined} title="Início">
+              <HiMiniHome className="w-5 h-5 mx-auto text-purple-400" aria-hidden="true" />
+            </NavLink>
+            <NavLink to="/hero" className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined} title="Sobre">
+              <PiSwordFill className="w-5 h-5 mx-auto text-purple-400" aria-hidden="true" />
+            </NavLink>
+            <NavLink to="/projects" className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined} title="Projetos">
+              <FaCode className="w-5 h-5 mx-auto text-purple-400" aria-hidden="true" />
+            </NavLink>
+          </div>
+        </div>
 
-        <div className={'flex items-center text-lg'}>
-        <Link to={'/'} className={'px-1 py-1 md:px-8 md:py-3 font-mono bg-gray-600 dark:bg-cyan-600 text-white rounded-lg dark:hover:bg-cyan-800 hover:bg-cyan-700 transition-colors'}><HiMiniHome className={'text-lg'} /></Link>
-      </div>
+        {/* Desktop: Horizontal layout */}
+        <div className="hidden md:flex items-center justify-between px-4 py-3">
+          {/* Brand - Left */}
+          <Link to="/" className="flex items-center gap-2 no-underline group" aria-label="PurpleCat Dev - Home">
+            <FaCat className="text-2xl text-purple-500 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
+            <span className="font-press text-lg whitespace-nowrap hover:bg-gray-900 dark:hover:bg-gray-950 px-2 py-0.5 rounded font-mono border border-gray-700">
+              <span className="text-purple-400">PrpCat</span><span className="text-green-400">_DEV</span>
+            </span>
+          </Link>
 
-      <div className={'flex items-center text-lg'}>
-        <Link to={'/hero'} className={'px-1 py-1 md:px-8 md:py-3 font-mono bg-gray-600 dark:bg-cyan-600 text-white rounded-lg dark:hover:bg-cyan-800 hover:bg-cyan-700 transition-colors'}><PiSwordFill className={'text-lg'} /></Link>
-      </div>
+          {/* Navigation Links - Centered */}
+          <div className="flex items-center justify-center -ml-40 gap-1">
+            <NavLink to="/" end className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined}>
+              <HiMiniHome className="w-5 h-5 mr-1 text-purple-400" aria-hidden="true" />
+              <span className="inline-block">Início</span>
+            </NavLink>
+            <NavLink to="/hero" className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined}>
+              <PiSwordFill className="w-5 h-5 mr-1 text-purple-400" aria-hidden="true" />
+              <span className="inline-block">Sobre</span>
+            </NavLink>
+            <NavLink to="/projects" className={navLinkClass} aria-current={({ isActive }) => isActive ? 'page' : undefined}>
+              <FaCode className="w-5 h-5 mr-1 text-purple-400" aria-hidden="true" />
+              <span className="inline-block">Projetos</span>
+            </NavLink>
+          </div>
 
-      <div>
-        <Darkmode className="" />
+          {/* Dark Mode Toggle - Right */}
+          <Darkmode />
+        </div>
+
       </div>
-    </div>
+    </nav>
   );
 }
 

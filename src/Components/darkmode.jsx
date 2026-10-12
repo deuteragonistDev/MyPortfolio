@@ -1,40 +1,66 @@
-import {useEffect, useState} from 'react'
-import {MdDarkMode, MdLightMode} from "react-icons/md";
+import { useEffect, useState, useRef } from 'react';
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 export default function Darkmode() {
-    // Inicializa o estado a ler a preferência inicial
-    const [isDark, setIsDark] = useState(() => {
-        return localStorage.theme === 'dark' ||
-            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    });
+    const [isDark, setIsDark] = useState(false);
+    const [mounted, setMounted] = useState(false);
+    const initialized = useRef(false);
 
-    // Sempre que o estado 'isDark' mudar, atualiza o HTML e o localStorage
+    // Initialize theme on mount to avoid hydration mismatch
     useEffect(() => {
+        if (initialized.current) return;
+        initialized.current = true;
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        setIsDark(initialDark);
+        setMounted(true);
+    }, []);
+
+    // Apply theme changes
+    useEffect(() => {
+        if (!mounted) return;
+        
         if (isDark) {
             document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
+            localStorage.setItem('theme', 'dark');
         } else {
             document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
+            localStorage.setItem('theme', 'light');
         }
-    }, [isDark]);
+    }, [isDark, mounted]);
 
-    // Função do botão de toggle
     const toggleTheme = () => {
-        setIsDark(!isDark);
+        setIsDark(prev => !prev);
     };
-    return (
-        <div>
-            <div>
-                <button onClick={toggleTheme} className="px-1 py-1 text-lg md:px-8 md:py-3 rounded-lg bg-gray-600 dark:bg-cyan-600 text-white font-medium dark:hover:bg-gray-600 hover:bg-cyan-700 hover:cursor-pointer transition-colors">
-                    {isDark ?
-                        (<MdDarkMode className="text-md  "/>)
-                        :
-                        (<MdLightMode className="text-md "/>)
-                    }
-                </button>
-            </div>
-        </div>
-    )
-}
 
+    // Don't render until mounted to prevent flash
+    if (!mounted) {
+        return (
+            <button
+                className="px-3 py-2 rounded-lg bg-gray-600 text-white transition-colors"
+                aria-label="Carregando tema..."
+                disabled
+            >
+                <MdLightMode className="w-5 h-5" aria-hidden="true" />
+            </button>
+        );
+    }
+
+    return (
+        <button
+            onClick={toggleTheme}
+            className="px-3 py-2 rounded-lg bg-gray-600 dark:bg-cyan-600 text-white hover:bg-gray-700 dark:hover:bg-cyan-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-800 dark:focus:ring-offset-gray-900"
+            aria-label={isDark ? 'Alternar para modo claro' : 'Alternar para modo escuro'}
+            aria-pressed={isDark}
+        >
+            {isDark ? (
+                <MdDarkMode className="w-5 h-5" aria-hidden="true" />
+            ) : (
+                <MdLightMode className="w-5 h-5" aria-hidden="true" />
+            )}
+        </button>
+    );
+}
